@@ -1,8 +1,4 @@
-from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def home():
+ci-cd-setup
     return "Olá, mundo! Meu projeto DevOps"
 
 if __name__ == "__main__":
