@@ -2,16 +2,13 @@ name: CI Workflow
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,8 +23,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
-        run: |
-          # Se você tiver testes, insira o comando para rodá-los aqui
-          # Exemplo para pytest: pytest
-          echo "Sem testes automáticos ainda - build ok"
+      - name: Run tests (placeholder)
+        run: echo "Sem testes automáticos ainda – build ok"
