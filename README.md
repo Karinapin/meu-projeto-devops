@@ -1,3 +1,3 @@
-# meu-projeto-devops
-Projeto simples para praticar CI/CD e Docker.
-Atualização para formativa 2Configuração de CI/CD no GitHub Actions
+# Meu Projeto DevOps
+Projeto para disciplina de DevOps
+Exemplo de CI/CD com Flask, Docker e GitHub Actions
