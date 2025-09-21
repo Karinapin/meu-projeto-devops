@@ -1,0 +1,18 @@
+name: Send alerts to Teams
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Teams
+        uses: Ilshidur/action-discord@master   # para Teams ou Slack use outra Action
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+        with:
+          args: "Novo commit/merge realizado no repositório"
