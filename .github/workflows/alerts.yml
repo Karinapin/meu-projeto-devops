@@ -11,8 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send message to Teams
-        uses: Ilshidur/action-discord@master   # para Teams ou Slack use outra Action
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
-        with:
-          args: "Novo commit/merge realizado no repositório"
+        run: |
+          curl -H 'Content-Type: application/json' \
+               -d "{
+                     \"summary\": \"CI/CD Pipeline\",
+                     \"text\": \"🚀 Novo evento detectado:\n
+                     • Autor: ${{ github.actor }}\n
+                     • Branch: ${{ github.ref_name }}\n
+                     • Commit: ${{ github.event.head_commit.message || 'Pull Request aberto' }}\n
+                     • Status: ${{ job.status }}\"
+                   }" \
+               ${{ secrets.TEAMS_WEBHOOK }}
