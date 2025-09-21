@@ -19,7 +19,7 @@ def test_home_status_code(client):
 def test_home_content(client):
     """Teste se a rota / retorna o texto esperado"""
     response = client.get('/')
-    assert b"Olá, mundo! Meu projeto DevOps" in response.data
+    assert "Olá, mundo! Meu projeto DevOps" in response.data.decode()
 
 def test_404_status_code(client):
     """Teste se rota inexistente retorna 404"""
