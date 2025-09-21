@@ -1,0 +1,24 @@
+name: Send alerts to Teams
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Teams
+        run: |
+          curl -H 'Content-Type: application/json' \
+               -d "{
+                     \"summary\": \"CI/CD Pipeline\",
+                     \"text\": \"🚀 Novo evento detectado:\n
+                     • Autor: ${{ github.actor }}\n
+                     • Branch: ${{ github.ref_name }}\n
+                     • Commit: ${{ github.event.head_commit.message || 'Pull Request aberto' }}\n
+                     • Status: ${{ job.status }}\"
+                   }" \
+               ${{ secrets.TEAMS_WEBHOOK }}
